@@ -1,0 +1,326 @@
+*
+{
+	margin:0;
+	padding:0;
+}
+body
+{
+	font-family: 'Gayathri', sans-serif;
+	background:#31224e;
+}
+.wrapper
+{
+	margin-top:25px;
+	margin-left:100px;
+}
+.bar
+{
+    width:4px;
+	background:white;
+	height:38px;
+	display:inline-block;
+	position:relative;
+	top:2px;
+	animation:animate 0.3s linear infinite;
+	opacity:0;
+	margin-left:3px;
+}
+@keyframes animate
+{
+    0%
+	{
+    	 opacity:0;
+	}
+	100%
+	{
+	     opacity:1;
+	}
+}
+#rpc
+{
+    display:inline;
+	font-size:50px;
+	color:white;
+	font-weight:bolder;
+}
+.container
+{
+	margin:auto;
+	width:60%;
+	color:white;
+	text-align:center;
+	display:flex;
+}
+
+.user,.computer
+{
+	width:50%;
+	border:3px solid white;
+	height:200px;
+	margin:10px;
+}
+.user p,.computer p
+{
+	padding:10px 0;
+	font-size:25px;
+	font-weight:bolder;
+}
+.sub-container
+{
+	width:40%;
+	height:60%;
+	background:#611542;
+	margin:auto;
+}
+.vs
+{
+	margin-top:120px;
+}
+.vs p
+{
+	font-size:30px;
+	font-weight:bold;
+}
+#computer-score,#user-score
+{
+	font-size:70px;
+	padding-top:30px;
+}
+#max-points
+{
+	width:90%;
+	margin:5px auto;
+	text-align:center;
+}
+.btn-max-score
+{
+	border:none;
+	font-size:25px;
+	width:60px;
+	height:60px;
+	font-family: 'Gayathri', sans-serif;
+	border-radius:50%;
+	cursor:pointer;
+	background:black;
+	color:white;
+	transform:scale(1.1);
+	margin:2px;
+}
+.btn-max-score:focus
+{
+	outline:none;
+}
+.btn-max-score:hover
+{
+	background:#ccc;
+	color:black;
+}
+.btn-max-score:active
+{
+	transform:scale(1);
+}
+#option
+{
+	width:90%;
+	margin:auto;
+	margin-top:10px;
+	text-align:center;
+	justify-content:center;
+	align-items:center;
+	display:none;
+}
+#option img
+{
+	width:100px;
+	cursor:pointer;
+	filter:grayscale(1);
+	transform:scale(1.1);
+	animation:animate3 1s ease;
+	animation-delay:0.4s;
+	animation-fill-mode:forwards;
+	opacity:0;
+}
+#option img:nth-child(2)
+{
+	animation-delay:0.6s;
+}
+#option img:nth-child(3)
+{
+	animation-delay:0.8s;
+}
+@keyframes animate3
+{
+	0%
+	{
+		opacity:0;
+	}
+	100%
+	{
+		opacity:1;
+	}
+}
+#option img:active
+{
+	transform:scale(1);
+}
+#option img:hover
+{
+	filter:grayscale(0);
+}
+.image-container
+{
+	width:90%;
+	margin:auto;
+	display:flex;
+	text-align:center;
+}
+.user-img,.computer-img
+{
+	width:300px;
+	margin:auto;
+}
+.user-img img,.computer-img img
+{
+	width:250px;
+}
+.image-user p,.image-comp p
+{
+	font-size:20px;
+	color:white;
+}
+.image-user,.image-comp
+{
+	animation:animate2 0.5s ease;
+	transform:scale(0);
+	animation-fill-mode:forwards;
+	display:none;
+}
+@keyframes animate2
+{
+	0%
+	{
+		transform:scale(0);
+	}
+	50%
+	{
+		transform:scale(1.1);
+	}
+	100%
+	{
+		transform:scale(1);
+	}
+}
+.winner
+{
+	width:90%;
+	margin:20px auto;
+	text-align:center;
+}
+#computer-winner
+{
+	opacity:0;
+}
+#user-winner
+{
+	opacity:0;
+}
+#draw
+{
+	opacity:0;
+}
+#computer-winner p,#user-winner p,#draw p
+{
+	font-size:30px;
+	color:white;
+	font-weight:bolder;
+}
+.new-game
+{
+	text-align:center;
+	display:none;
+}
+.new-game button
+{
+	width:150px;
+	height:40px;
+	color:white;
+	background:black;
+	font-size:20px;
+	font-family: 'Gayathri', sans-serif;
+	border:none;
+	transform:scale(1.05);
+	cursor:pointer;
+}
+.new-game button:focus
+{
+	outline:none;
+}
+.new-game button:hover
+{
+	background:#ccc;
+	color:black;
+}
+.new-game button:active
+{
+	transform:scale(1);
+}
+::-webkit-scrollbar
+{
+	width:0px;
+}
+
+@media screen and (max-width:1000px)
+{
+	.container
+	{
+		width:80%;
+	}
+}
+@media screen and (max-width:600px)
+{
+	.container
+	{
+		width:90%;
+	}
+	.image-container
+	{
+		width:100%;
+	}
+	.user-img,.computer-img
+	{
+		width:100%;
+	}
+	.user-img img,.computer-img img
+	{
+		width:70%;
+	}
+	#rpc
+	{
+		font-size:40px;
+	}
+}
+@media screen and (max-width:450px)
+{
+	.container
+	{
+		width:97%;
+	}
+	#option
+	{
+		width:100%
+	}
+	#option img
+	{
+		width:80px;
+	}
+}
+
+
+
+
+
+
+
+
+
+

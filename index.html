@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width , initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" type="text/css" href="files/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Gayathri&display=swap" rel="stylesheet">
+ </head>
+ <body>
+ <div class="wrapper">
+  <p id="rpc"></p>
+  <div class="bar"></div>
+  </div>
+  <div class="container">
+   <div class="user">
+    <p class="head">YOU</p>
+	<div class="sub-container">
+	 <p id="user-score">0</p>
+	</div>
+   </div>
+   <div class="vs">
+    <p>VS</p>
+   </div>
+   <div class="computer">
+    <p class="head">COMPUTER</p>
+	<div class="sub-container">
+	 <p id="computer-score">0</p>
+	</div>
+   </div>
+  </div>
+  <div id="max-points">
+   <p style="color:white;font-size:20px;padding:10px;">ENTER MAX SCORE</p>
+   <button class="btn-max-score" onclick="maxScore(5)">5</button>
+   <button class="btn-max-score" onclick="maxScore(10)">10</button>
+  </div>
+  <div id="option">
+   <img src="files/rock.png" title="rock" onclick="res(1)">
+   <img src="files/paper.png" title="paper" onclick="res(2)">
+   <img src="files/scissors.png" title="scissors" onclick="res(3)">
+  </div>
+  <div class="image-container">
+   <div class="user-img">
+    <div class="image-user">
+     <img src="files/rock.png">
+	 <p>ROCK</p>
+	</div>
+	<div class="image-user">
+     <img src="files/paper.png">
+	 <p>PAPER</p>
+	</div>
+	<div class="image-user">
+     <img src="files/scissors.png">
+	 <p>SCISSORS</p>
+	</div>
+   </div>
+   <div class="computer-img">
+    <div class="image-comp">
+     <img src="files/rock.png">
+	 <p>ROCK</p>
+	</div>
+	<div class="image-comp">
+     <img src="files/paper.png">
+	 <p>PAPER</p>
+	</div>
+	<div class="image-comp">
+     <img src="files/scissors.png">
+	 <p>SCISSORS</p>
+	</div>
+   </div>
+  </div>
+  
+  <div class="winner">
+   <div id="user-winner">
+    <p>CONGRATULATIONS</p>
+    <p>YOU WON !</p>
+   </div>
+   <div id="computer-winner">
+    <p>YOU LOST !</p>
+    <p>BETTER LUCK NEXT TIME.</p>
+   </div>
+   <div id="draw">
+    <p>IT'S A DRAW</p>
+   </div>
+  </div>
+  
+  <div class="new-game">
+   <button onclick="document.location.reload(true)">NEW GAME</button>
+  </div>
+ 
+ <!-- first script-->
+ 
+ <script>
+  window.onload=myFunction;
+  var currentLetterIndex=0;
+  var currentWordIndex=0;
+  var currentWord=" ";
+  var words=['ROCK' , 'PAPER' , 'SCISSORS'];
+  function myFunction()
+  {
+   var x = document.getElementById("rpc");
+   var word=words[currentWordIndex];
+   if(currentWordIndex<words.length)
+   {
+    if(currentLetterIndex<=word.length)
+    {
+     x.innerHTML=currentWord;
+	 currentWord+=word[currentLetterIndex];
+	 currentLetterIndex++;
+    }
+    else
+    {
+     currentLetterIndex=0;
+	 currentWord=" ";
+	 currentWordIndex++;
+    }
+   }
+   else
+    currentWordIndex=0;
+   setTimeout(myFunction,500);
+  }
+ </script>
+ 
+ <!-- second script-->
+ 
+ <script>
+  var imageUser = document.getElementsByClassName("image-user");
+  var imageComp = document.getElementsByClassName("image-comp");
+  var option = document.getElementById("option");
+  var mp = document.getElementById("max-points");
+  var maxPoints;
+  var compScore = 0;
+  var userScore = 0;
+  
+  //for obtianing max score
+  function maxScore(n)
+  {
+   maxPoints=n;
+   console.log(n);
+   mp.style.display="none";
+   option.style.display="block";
+  }
+  
+  //to obtain result
+  function res(user)
+  {
+   var computer = Math.floor((Math.random() * 3) + 1);
+   for(var i=0;i<imageUser.length;i++)
+   {
+    imageUser[i].style.display="none";
+    imageComp[i].style.display="none";
+   }
+   imageUser[user-1].style.display="block";
+   imageComp[computer-1].style.display="block";
+   
+   //to check whether any player exceeds the max limit
+   
+   if(userScore<maxPoints && compScore<maxPoints)
+   {
+    if(user == computer)
+    {
+     document.getElementById("computer-score").innerHTML = compScore;
+	 document.getElementById("user-score").innerHTML = userScore;
+    }
+    // user->ROCK
+    else if(user==1)
+    {
+     if(computer==2)
+	 {
+	  compScore++;
+	  document.getElementById("computer-score").innerHTML = compScore;
+	  document.getElementById("user-score").innerHTML = userScore;
+	 }
+	 else if(computer==3)
+	 {
+	  userScore++;
+	  document.getElementById("computer-score").innerHTML = compScore;
+	  document.getElementById("user-score").innerHTML = userScore;
+	 }
+    }
+    //user->PAPER
+    else if(user==2)
+    {
+     if(computer==1)
+	 {
+	  userScore++;
+	  document.getElementById("computer-score").innerHTML = compScore;
+	  document.getElementById("user-score").innerHTML = userScore;
+	 }
+	 else if(computer==3)
+	 {
+	  compScore++;
+	  document.getElementById("computer-score").innerHTML = compScore;
+	  document.getElementById("user-score").innerHTML = userScore;
+	 }
+    }
+    //user->SCISSORS
+    else if(user==3)
+    {
+     if(computer==1)
+	 {
+	  compScore++;
+	  document.getElementById("computer-score").innerHTML = compScore;
+	  document.getElementById("user-score").innerHTML = userScore;
+	 }
+	 else if(computer==2)
+	 {
+	  userScore++;
+	  document.getElementById("computer-score").innerHTML = compScore;
+	  document.getElementById("user-score").innerHTML = userScore;
+	 }
+    }
+   }
+   
+   // to declare the winner
+   if(userScore==maxPoints || compScore==maxPoints)
+   {
+    document.querySelector(".new-game").style.display="block";
+    for(var i=0;i<imageUser.length;i++)
+    {
+     imageUser[i].style.display="none";
+     imageComp[i].style.display="none";
+    }
+    if(userScore>compScore)
+	{
+	 document.getElementById("user-winner").style.opacity="1";
+	 document.getElementById("computer-winner").style.display="none";
+	 document.getElementById("draw").style.display="none";
+	}
+	else if(compScore>userScore)
+	{
+	 document.getElementById("user-winner").style.display="none";
+	 document.getElementById("computer-winner").style.opacity="1";
+	 document.getElementById("draw").style.display="none";	 
+	}
+	else
+	{
+	 document.getElementById("user-winner").style.display="none";
+	 document.getElementById("draw").style.opacity="1";
+	 document.getElementById("computer-winner").style.display="none";
+	}
+   }
+  }  
+ </script>
+ </body>
+</html>
